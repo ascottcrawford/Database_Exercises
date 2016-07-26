@@ -11,7 +11,11 @@ SELECT * from albums where name = 'Sgt Peppers';
 
 SELECT 'Nevermind Genre' as caption;
 
-SELECT * from albums where artist = 'Nirvana';
+SELECT * from albums where genre = 'grunge';
+
+SELECT 'Sales less than 20 Million' as caption;
+
+SELECT * from albums where sales < 20;
 
 
 
