@@ -118,7 +118,7 @@ ORDER BY first_name ASC, last_name DESC;
 
 SELECT * FROM employees 
 WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-ORDER BY birth_date ASC, hire_date ASC;</string>
+ORDER BY birth_date ASC, hire_date DESC;</string>
 			<key>table</key>
 			<string>employees</string>
 			<key>view</key>
