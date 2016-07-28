@@ -74,6 +74,8 @@
 			UgFWAV8BZAFmAWwBcQFzAX0BggGRAZUBnQGiAaUBtwG6Ab8AAAAA
 			AAACAQAAAAAAAABCAAAAAAAAAAAAAAAAAAABwQ==
 			</data>
+			<key>contentSortCol</key>
+			<string>from_date</string>
 			<key>contentSortColIsAsc</key>
 			<true/>
 			<key>contentViewport</key>
@@ -123,12 +125,47 @@ and birth_date like '%-12-25'
 ORDER BY birth_date ASC, hire_date DESC;
 
 
+SELECT * FROM employees GROUP BY first_name;
+SELECT first_name FROM employees GROUP BY first_name;
+SELECT * FROM employees GROUP BY first_name DESC;
+
+
 SELECT DISTINCT title
 FROM titles
 ORDER BY title;
 
 
-SELECT DISTINCT last_name FROM employees WHERE last_name LIKE 'E%' AND last_name LIKE '%e';
+SELECT DISTINCT last_name, first_name FROM employees WHERE last_name LIKE 'E%' AND last_name LIKE '%e';
+SELECT first_name, last_name FROM employees WHERE last_name LIKE 'E%e' GROUP BY last_name;
+
+SELECT DISTINCT last_name FROM employees WHERE last_name LIKE '%q%' AND NOT last_name LIKE '%qu%';
+
+SELECT * FROM auctions WHERE categorey LIKE "%Haunted dolls%" LIMIT 24 OFFSET 24;
+
+SELECT DISTINCT last_name FROM employees ORDER BY last_name DESC LIMIT 10;
+
+SELECT * FROM employees 
+WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+and birth_date like '%-12-25'
+ORDER BY birth_date ASC, hire_date DESC
+LIMIT 5 OFFSET 45;
+
+
+SELECT CONCAT(first_name, '', last_name) AS 'full_name' from employees;
+
+SELECT CONCAT('Hello ', 'class') as 'greeting';
+
+SELECT * FROM employees WHERE last_name LIKE 'ro%' AND last_name NOT LIKE '%rus%';
+
+SELECT NOW();
+SELECT CURDATE();
+SELECT CURTIME();
+
+SELECT * FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 5; 
+
+SELECT UNIX_TIMESTAMP();
+SELECT UNIX_TIMESTAMP('1970-01-02');
+
 
 
 
@@ -150,60 +187,31 @@ SELECT DISTINCT last_name FROM employees WHERE last_name LIKE 'E%' AND last_name
 	<array/>
 	<key>queryHistory</key>
 	<array>
-		<string>SELECT DISTINCT title
-FROM titles
-ORDER BY title</string>
-		<string>SELECT DISTINCT title
-FROM titles</string>
-		<string>SELECT first_name
-FROM employees
-GROUP BY first_name</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 5</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 1</string>
+		<string>SELECT DISTINCT title, from_date, to_date FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 1</string>
+		<string>SELECT * title FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 1</string>
+		<string>SELECT DISTINCT title FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 1</string>
+		<string>SELECT CURTIME()</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date ASC LIMIT 20</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= CURDATE() ORDER BY from_date DESC LIMIT 20</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= CURDATE() LIMIT 20 OFFSET 20</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= CURDATE() LIMIT 20</string>
+		<string>SELECT * FROM titles WHERE to_date &gt;= NOW()</string>
+		<string>SELECT CURDATE()</string>
+		<string>SELECT NOW()</string>
+		<string>SELECT * FROM employees WHERE last_name LIKE 'ro%' AND last_name NOT LIKE '%rus%'</string>
+		<string>SELECT * FROM employees WHERE last_name LIKE 'ro%' AND NOT LIKE '%rus%'</string>
+		<string>SELECT * FROM employees WHERE last_name NOT LIKE '%rus%'</string>
+		<string>SELECT * FROM employees WHERE last_name LIKE 'ro%'</string>
+		<string>SELECT CONCAT(first_name, '', last_name) AS 'full_name' from employees</string>
+		<string>SELECT first_name, last_name from employees;
+SELECT CONCAT('Hello ', 'class') as 'greeting'</string>
 		<string>SELECT * FROM employees 
 WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
 and birth_date like '%-12-25'
-ORDER BY birth_date ASC, hire_date DESC</string>
-		<string>SELECT * FROM employees 
-WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-ORDER BY birth_date ASC, hire_date DESC</string>
-		<string>SELECT * FROM employees 
-WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-ORDER BY birth_date ASC, hire_date ASC</string>
-		<string>SELECT * FROM employees 
-WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-ORDER BY birth_date DESC, hire_date ASC</string>
-		<string>SELECT * FROM employees 
-WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-ORDER BY birth_date DESC, hire_date DESC</string>
-		<string>SELECT * FROM employees WHERE last_name LIKE 'E%'
-ORDER BY emp_no DESC</string>
-		<string>SELECT * FROM employees WHERE last_name LIKE 'E%'
-ORDER BY emp_no</string>
-		<string>SELECT * 
-FROM employees 
-WHERE first_name = 'Irena' OR first_name = 'Vidya' OR first_name = 'Maya'
-ORDER BY first_name</string>
-		<string>SELECT * 
-FROM employees 
-WHERE first_name = 'Irena' OR first_name = 'Vidya' OR first_name = 'Maya'
-ORDER BY last_name, first_name</string>
-		<string>SELECT * 
-FROM employees 
-WHERE first_name = 'Irena' OR first_name = 'Vidya' OR first_name = 'Maya'
-ORDER BY first_name ASC</string>
-		<string>SELECT first_name, last_name
-from employees
-WHERE first_name like 'L%'
-ORDER BY first_name ASC, last_name DESC</string>
-		<string>SELECT first_name, last_name
-from employees
-ORDER BY first_name ASC, last_name DESC</string>
-		<string>SELECT first_name, last_name
-from employees
-ORDER BY first_name DESC</string>
-		<string>SELECT * FROM employees WHERE last_name LIKE '%q%' AND NOT last_name LIKE '%qu%'</string>
-		<string>SELECT * FROM employees WHERE last_name LIKE '%q%' AND NOT '%qu%'</string>
-		<string>SELECT * FROM employees WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31' AND birth_date Like '%-12-25'</string>
-		<string>SELECT * FROM employees WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31' AND birth_date Like '%-12-35'</string>
+ORDER BY birth_date ASC, hire_date DESC
+LIMIT 5 OFFSET 45</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
